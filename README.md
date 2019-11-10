@@ -57,7 +57,18 @@ GCC9 is now included within the regular `bin` and `lib32` directories - no addit
 
 ## Troubleshooting
 
-Getting a bunch of errors? If you have issues with headers, it's maybe a mismatch of version and you may need to regenerate the GCC "fixed" headers. If you are building on IRIX 6.5.22 you need to rebuild the headers for GCC since didbs was built on a 6.5.30 system. Once the headers are updated builds are fine on 6.5.22.
+
+### didbs Issues on github
+Your first place to check when you encounter an issue with didbs is the *issues* page on github for this project. You can find it here:
+
+https://github.com/danielhams/didbs/issues
+
+This page will provide valuable insight into all the current issues with didbs. If there is something new please create an issue and this will ensure it receives attention at the *appropriate time*.
+
+With that said, there is one very common roadblock discussed below that is not an issue with didbs but is something you need to do if you are not using the very last version of IRIX, 6.5.30, upon which didbs is built. Using older versions will require you to rebuild the headers for GCC. See below.
+
+### Rebuilding Headers for GCC
+Getting a bunch of build errors? If you experience issues with headers, it's maybe a mismatch of version and you may need to regenerate the GCC "fixed" headers. If you are building on IRIX 6.5.22 you need to rebuild the headers for GCC since didbs was built on a 6.5.30 system. Once the headers are updated builds are fine on 6.5.22.
 
 Info here: https://gcc.gnu.org/onlinedocs/gcc/Fixed-Headers.html
 
@@ -71,12 +82,12 @@ To find the mkheaders script a command like this (from /usr/didbs/current) will 
 ```
 Now move into the gcc version you want to update and run the mkheaders script from the install-tools directory. Once it's done go building.
 
-## How to Do Stuff
+## How To Do Stuff
 
-### Enable extra goodies in didbs.
-* go to the package directory of the target goodie (in this sample say `sudo`)
+### Enable extra goodies in didbs
+* go to the package directory of the target goodie (in this sample below I'll do it for  `sudo`)
 * edit the sudo.packagedef file
-* change disabled=1 to 0 (it should be a 1 to indicate not to build on bootstrap)
+* change disabled=1 to 0 (it should be a 1 to indicate the default is *not* to build on bootstrap)
 * save file
 * back in the main didbs repo directory a `./boostrap.pl --dryrun` should indicate it will be built
 
